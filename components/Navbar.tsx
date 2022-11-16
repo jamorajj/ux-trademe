@@ -3,7 +3,9 @@ import Link from "next/link";
 
 export default function Navbar() {
   const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  const theme = useThemeStore((state) => state.theme);
   const toggleUI = useThemeStore((state) => state.toggleUI);
+  const uiType = useThemeStore((state) => state.uiType);
 
   return (
     <nav className="navbar bg-base-100">
@@ -15,7 +17,11 @@ export default function Navbar() {
       <div className="flex-none gap-2">
         <div className="form-control">
           <label className="swap">
-            <input type="checkbox" onChange={toggleUI} />
+            <input
+              type="checkbox"
+              checked={uiType === "compact"}
+              onChange={toggleUI}
+            />
             <div className="swap-on text-sm md:text-md">UI 2</div>
             <div className="swap-off text-sm md:text-md">UI 1</div>
           </label>
@@ -25,7 +31,11 @@ export default function Navbar() {
 
         <div className="form-control">
           <label className="swap swap-rotate">
-            <input type="checkbox" onChange={toggleTheme} />
+            <input
+              type="checkbox"
+              checked={theme === "dark"}
+              onChange={toggleTheme}
+            />
             <svg
               className="swap-off fill-current w-6 md:w-10 h-6 md:h-10"
               xmlns="http://www.w3.org/2000/svg"
