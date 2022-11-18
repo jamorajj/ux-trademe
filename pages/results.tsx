@@ -11,7 +11,6 @@ export default function ResultsPage() {
   const [collapseShow, setCollapseShow] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedSort, setSelectedSort] = useState(1);
   const uiType = useThemeStore((state) => state.uiType);
 
   const router = useRouter();
@@ -30,19 +29,9 @@ export default function ResultsPage() {
     setCollapseShow(!collapseShow);
   };
 
-  const toggleMenu = () => {
-    setCollapseShow(false);
-    setShowMenu(!showMenu);
-  };
-
   const toggleCollapseWithRefresh = () => {
     setCollapseShow(!collapseShow);
     setShowOverlay(true);
-    refreshPage();
-  };
-
-  const selectSort = (catNumber: number) => {
-    setSelectedSort(catNumber);
     refreshPage();
   };
 
@@ -110,44 +99,6 @@ export default function ResultsPage() {
                 <SearchFormCompact searchCallback={toggleCollapseWithRefresh} />
               )}
             </div>
-          </div>
-          <div
-            className="mt-2 dropdown dropdown-end dropdown-open"
-            onClick={toggleMenu}
-          >
-            <label
-              tabIndex={0}
-              className="btn btn-block btn-primary mb-4 md:mb-0 rounded-none"
-            >
-              Sort
-            </label>
-            <ul
-              tabIndex={0}
-              className={`dropdown-content menu p-2 shadow bg-base-100 rounded-none w-full md:w-52 ${
-                showMenu ? "visible" : "hidden"
-              }`}
-            >
-              <li>
-                <a onClick={() => selectSort(1)}>
-                  {selectedSort === 1 && "· "}Featured Jobs
-                </a>
-              </li>
-              <li>
-                <a onClick={() => selectSort(2)}>
-                  {selectedSort === 2 && "· "}Latest Jobs
-                </a>
-              </li>
-              <li>
-                <a onClick={() => selectSort(3)}>
-                  {selectedSort === 3 && "· "}Highest Salary
-                </a>
-              </li>
-              <li>
-                <a onClick={() => selectSort(4)}>
-                  {selectedSort === 4 && "· "}Lowest Salary
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
 

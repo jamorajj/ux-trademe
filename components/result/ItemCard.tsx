@@ -1,38 +1,13 @@
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import JobToast from "../JobToast";
 
 export default function ItemCard() {
   const router = useRouter();
 
-  const goToSaved = () => {
-    toast.dismiss();
-    router.push("/saved");
-  };
-
-  const saveJobNotify = (e) => {
-    e.stopPropagation();
-    toast(<JobToast toastCallback={goToSaved} />);
-  };
-
   return (
     <div
       onClick={() => router.push("/result")}
-      className={`card md:card-side bg-base-100 hover:bg-base-200 rounded-none shadow-xl mb-4 cursor-pointer ${
-        router.pathname !== "/saved" ? "indicator" : ""
-      } w-full`}
+      className={`card md:card-side bg-base-100 hover:bg-base-200 rounded-none shadow-xl mb-4 cursor-pointer w-full`}
     >
-      {router.pathname !== "/saved" && (
-        <span className="indicator-item -translate-y-0 -translate-x-0">
-          <button
-            onClick={saveJobNotify}
-            className="rounded-none btn btn-accent btn-xs"
-          >
-            Save Job
-          </button>
-        </span>
-      )}
-
       <figure>
         <img src="https://placeimg.com/200/200/arch" alt="Album" />
       </figure>
