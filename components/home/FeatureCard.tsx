@@ -1,28 +1,10 @@
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import JobToast from "../JobToast";
 
 export default function FeatureCard() {
   const router = useRouter();
 
-  const goToSaved = () => {
-    toast.dismiss();
-    router.push("/saved");
-  };
-
-  const saveJobNotify = () => toast(<JobToast toastCallback={goToSaved} />);
-
   return (
-    <div className="card w-64 bg-base-100 shadow-md indicator">
-      <span className="indicator-item -translate-y-0 -translate-x-0">
-        <button
-          onClick={saveJobNotify}
-          className="rounded-none btn btn-accent btn-xs"
-        >
-          Save Job
-        </button>
-      </span>
-
+    <div className="card w-68 bg-base-100 shadow-md">
       <div className="card-body">
         <figure>
           <img src="https://placeimg.com/82/82/arch" alt="Album" />
