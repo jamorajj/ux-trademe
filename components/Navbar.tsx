@@ -52,15 +52,6 @@ export default function Navbar() {
             </svg>
           </label>
         </div>
-
-        <div>
-          <Link
-            href="/saved"
-            className="btn btn-ghost btn-sm md:btn-md normal-case text-sm md:text-md"
-          >
-            My Jobs
-          </Link>
-        </div>
       </div>
     </nav>
   );
